@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="bg-[#F8FAFC]">
+    <header class="w-[80%] mx-auto">
+        <h1 class="text-[32px] font-bold ">Job Application Tracker</h1>
+        <div class="grid grid-cols-3 gap-5">
+            <div class="bg-amber-200 p-4"> 
+                <p>Total</p>
+                <p id="total">0</p>
+            </div>
+            <div class="bg-green-200 p-4">
+                <p>Interview</p>
+                <p id="interview-count">0</p>
+            </div>
+            <div class="bg-purple-200 p-4">
+                <p>Rejected</p>
+                <p id="rejected-count">0</p>
+            </div>
+        </div>
+    </header>
+
+    <hr class="my-6">
+
+    <main class="w-[80%] mx-auto">
+
+        <div class=" gap-5 mb-6 space-y-5">
+            <div class="flex justify-between">
+            <h1 class="font-semibold text-2xl">Availale Jobs</h1>
+            <p><span id="total-jobs">0</span> jobs</p>
+            </div>
+           <div class="flex gap-3">
+        <button onclick="toggle('all-filter-btn')"  class="bg-[#3B82F6] text-[#FFFFFF] rounded-md py-2 px-5" id="all-filter-btn">All</button>
+
+        <button onclick="toggle('interview-filter-btn')"  class="bg-[#FFFFFF] text-[#64748B] py-2 px-5 rounded-md" id="interview-filter-btn">Interview</button>
+
+        <button onclick="toggle('rejected-filter-btn')"  class="bg-[#FFFFFF] text-[#64748B] py-2 px-5 rounded-md" id="rejected-filter-btn">Rejected</button>
+            </div> 
+        </div>
+
+            <!--Interview Filtered Section  -->
+            <section id="fltered-section" class="hidden space-y-5 mb-[50px]">
+
+            </section>
+            
+
+
+    <section id="all-application" class="space-y-5 mb-[50px]">
+        <!-- card 1  -->
+        <div class=" job-card flex justify-between border p-5">
+        <!-- main part 1  -->
+        <div class="space-y-4">
+        <!-- part 1  -->
+            <div>
+                <p class="company text-4xl">Mobile First Corp</p>
+                <p class="skill">React Native Developer</p>
+            </div>
+        <!-- part 2  -->
+         <div class="flex gap-2">
+        <p class="salary">Remote • Full-time •$130,000 - $175,000</p>
+            <!-- <p class="water bg-gray-200 px-5">Weekly</p> -->
+         </div>
+        <!-- part 3  -->
+        <p class="status bg-gray-300 max-w-[100px] py-1 text-center rounded-sm">Not Applied</p>
+         <p class="work">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+
+         <div class="flex gap-4">
+            <button class="interview-btn font-semibold border border-[#10B981] px-4 py-2 text-[#10B981]">Interview</button>
+            <button class="rejected-btn font-semibold border border-[#EF4444] text-[#EF4444] px-4 py-2">Rejected</button>
+         </div>
+        </div>
+        <!-- main part 2  -->
+            <div>
+                <button  class="delete"><span class="bg-[#64748B]/10 p-2 rounded-full"><i class="fa-regular fa-trash-can"></i></span></button>
+            </div>
+        </div>
+        <!-- card 2  -->
+        <div class="job-card flex justify-between border p-5">
+        <!-- main part 1  -->
+        <div class="space-y-4">
+        <!-- part 1  -->
+            <div>
+                <p class="company text-4xl">WebFlow Agency</p>
+                <p class="skill">React Native Developer</p>
+            </div>
+        <!-- part 2  -->
+         <div class="flex gap-2">
+        <p class="salary">Remote • Full-time •$130,000 - $175,000</p>
+            <!-- <p class="water bg-gray-200 px-5">Weekly</p> -->
+         </div>
+        <!-- part 3  -->
+        <p class="status bg-gray-300 max-w-[100px] py-1 text-center rounded-sm">Not Applied</p>
+         <p class="work">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+
+         <div class="flex gap-4">
+            <button class="interview-btn font-semibold border border-[#10B981] px-4 py-2 text-[#10B981]">Interview</button>
+            <button class="rejected-btn font-semibold border border-[#EF4444] text-[#EF4444] px-4 py-2">Rejected</button>
+         </div>
+        </div>
+        <!-- main part 2  -->
+            <div>
+                <button class="delete"><span class="bg-[#64748B]/10 p-2 rounded-full"><i class="fa-regular fa-trash-can"></i></span></button>
+            </div>
+        </div>
+        <!-- card 3  -->
+        <div class="job-card flex justify-between border p-5">
+        <!-- main part 1  -->
+        <div class="space-y-4">
+        <!-- part 1  -->
+            <div>
+                <p class="company text-4xl">DataViz Solutions</p>
+                <p class="skill">React Native Developer</p>
+            </div>
+        <!-- part 2  -->
+         <div class="flex gap-2">
+        <p class="salary">Remote • Full-time •$130,000 - $175,000</p>
+            <!-- <p class="water bg-gray-200 px-5">Weekly</p> -->
+         </div>
+        <!-- part 3  -->
+        <p class="status bg-gray-300 max-w-[100px] py-1 text-center rounded-sm">Not Applied</p>
+         <p class="work">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+
+         <div class="flex gap-4">
+            <button class="interview-btn font-semibold border border-[#10B981] px-4 py-2 text-[#10B981]">Interview</button>
+            <button class="rejected-btn font-semibold border border-[#EF4444] text-[#EF4444] px-4 py-2">Rejected</button>
+         </div>
+        </div>
+        <!-- main part 2  -->
+            <div>
+                <button class="delete"><span class="bg-[#64748B]/10 p-2 rounded-full"><i class="fa-regular fa-trash-can"></i></span></button>
+            </div>
+        </div>
+
+       
+    </section>
+
+
+
+    <section id="empty">
+
+    </section>
+    </main>
+
+    <script src="./script.js"></script>
+    <script src="./function.js"></script>
+</body>
+</html>
