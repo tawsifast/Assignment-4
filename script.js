@@ -112,6 +112,7 @@ document.addEventListener("click",function(event){
     const status = parentNode.querySelector(".status").innerText;
     const work = parentNode.querySelector(".work").innerText;
     parentNode.querySelector(".status").innerText = "Interview";
+  
     // parentNode.querySelector(".status").style.bgcolor = "red";
     // status.style.bg-color = "green";
     const card = {
@@ -134,6 +135,13 @@ document.addEventListener("click",function(event){
         // totalJobs.innerText = rejectionList.length;
         renderRejection();
     }
+
+//-------------
+
+    
+
+
+//-----------
 
     }
 
@@ -179,15 +187,13 @@ document.addEventListener("click",function(event){
 
     const company = parentNode.querySelector(".company").innerText;
 
-    // interviewList থেকে remove করব
     interviewList = interviewList.filter(item => item.company !== company);
-    // rejectionList থেকে remove করব
+
     rejectionList = rejectionList.filter(item => item.company !== company);
 
-    // DOM থেকে remove করব
     parentNode.remove();
 
-    // যদি filter page এ থাকি তাহলে আবার render করব
+
     if(currentStatus === "interview-filter-btn"){
         renderInterview();
     }

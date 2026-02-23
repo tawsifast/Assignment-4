@@ -78,6 +78,7 @@ function renderRejection(){
 
 
 
+
 //------------Calculate Count----------------//
 
 
@@ -98,5 +99,7 @@ function count(){
     }
 }
 count();
+
+
 
 
