@@ -17,12 +17,12 @@ function renderInterview(){
             </div>
         <!-- part 2  -->
          <div class="flex gap-2">
-        <p class="salary">Remote • Full-time •$130,000 - $175,000</p>
+        <p class="salary">${interview.salary}</p>
             
          </div>
         <!-- part 3  -->
         <p class="status max-w-[100px] py-1 text-center font-semibold text-white bg-green-400 rounded-sm">${interview.status}</p>
-         <p class="work">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+         <p class="work">${interview.work}</p>
 
          <div class="flex gap-4">
             <button class="interview-btn font-semibold border border-[#10B981] px-4 py-2 text-[#10B981]">Interview</button>
@@ -59,12 +59,12 @@ function renderRejection(){
             </div>
         <!-- part 2  -->
          <div class="flex gap-2">
-        <p class="salary">Remote • Full-time •$130,000 - $175,000</p>
+        <p class="salary">${reject.salary}</p>
             
          </div>
         <!-- part 3  -->
         <p class="status bg-red-700 text-white font-semibold max-w-[100px] py-1 text-center rounded-sm">${reject.status}</p>
-         <p class="work">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+         <p class="work">${reject.work}</p>
 
          <div class="flex gap-4">
             <button class="interview-btn font-semibold border border-[#10B981] px-4 py-2 text-[#10B981]">Interview</button>
