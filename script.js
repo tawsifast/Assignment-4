@@ -16,10 +16,10 @@ const filter = document.getElementById("fltered-section");
 const allFilterBtn = document.getElementById("all-filter-btn");
 const interviewFilterBtn = document.getElementById("interview-filter-btn");
 const rejectedFilterBtn = document.getElementById("rejected-filter-btn");
+const totalJobs = document.getElementById("total-jobs");
+const deletebtn = document.querySelector(".delete");
 
 //--------------- job tracker count updating---------------//
-
-
 
 function toggle(id){
 
@@ -43,20 +43,25 @@ function toggle(id){
     if(id == 'interview-filter-btn'){
         application.classList.add('hidden');
         filter.classList.remove('hidden');
+        totalJobs.innerText = interviewList.length;
         renderInterview();
     }else if(id == 'all-filter-btn'){
         application.classList.remove('hidden');
         filter.classList.add('hidden');
+        // total.innerText = application.children.length;
 
     }else if(id == "rejected-filter-btn"){
         application.classList.add('hidden');
         filter.classList.remove('hidden');
+        totalJobs.innerText = rejectionList.length;
         renderRejection();
     }
-
+ count();
     //-----btn e click korle & list empty thakle kaj korbe-----------//
+
+
     if(id == 'interview-filter-btn' && interviewList.length == 0){
-            filter.innerhtml ='';
+            filter.innerHTML ='';
             let div = document.createElement("div");
             div.className = "flex flex-col items-center my-[15%] space-y-5";
             div.innerHTML = `
@@ -85,7 +90,10 @@ function toggle(id){
             `
             filter.appendChild(div);
     }
+
 }
+
+
 
 //------------main function e eventlistener add er moddhome interviewlist & rejectedList banabo------------//
 
@@ -94,10 +102,9 @@ function toggle(id){
 document.addEventListener("click",function(event){
 
     if(event.target.classList.contains("interview-btn")){
-
+    
     // const parentNode = event.target.parentNode.parentNode;
-    // const parentNode = event.target.closest('.job-card');
-    const parentNode = event.target.parentNode.parentNode;
+    const parentNode = event.target.closest('.job-card');
     console.log(parentNode);
     const company = parentNode.querySelector(".company").innerText;
     const skill = parentNode.querySelector(".skill").innerText;
@@ -105,7 +112,7 @@ document.addEventListener("click",function(event){
     const status = parentNode.querySelector(".status").innerText;
     const work = parentNode.querySelector(".work").innerText;
     parentNode.querySelector(".status").innerText = "Interview";
-    parentNode.querySelector(".status").style.bgcolor = "red";
+    // parentNode.querySelector(".status").style.bgcolor = "red";
     // status.style.bg-color = "green";
     const card = {
         company,
@@ -124,16 +131,15 @@ document.addEventListener("click",function(event){
     rejectionList = rejectionList.filter(item => item.company != card.company)
         count();
     if(currentStatus == "rejected-filter-btn"){
+        // totalJobs.innerText = rejectionList.length;
         renderRejection();
     }
 
     }
 
     else if(event.target.classList.contains("rejected-btn")){
-        
-
-    const parentNode = event.target.parentNode.parentNode;
-    // const parentNode = event.target.closest('.job-card');
+    // const parentNode = event.target.parentNode.parentNode;
+    const parentNode = event.target.closest('.job-card');
     console.log(parentNode);
     const company = parentNode.querySelector(".company").innerText;
     const skill = parentNode.querySelector(".skill").innerText;
@@ -141,6 +147,7 @@ document.addEventListener("click",function(event){
     const status = parentNode.querySelector(".status").innerText;
     const work = parentNode.querySelector(".work").innerText;
     parentNode.querySelector(".status").innerText = "Rejected";
+    
     const card = {
         company,
         skill,
@@ -162,40 +169,39 @@ document.addEventListener("click",function(event){
     count();
     }
 
-
     // else if(event.target.parentNode.parentNode){
-else if(event.target.closest(".delete")){
+    else if(event.target.closest(".delete")){
 
+    
     // const parentNode = event.target.parentNode.parentNode.parentNode.parentNode;
     const parentNode = event.target.closest('.job-card');
-    console.log(parentNode);
+    // console.log(parentNode);
 
     const company = parentNode.querySelector(".company").innerText;
 
-    // interviewList থেকে remove
+    // interviewList থেকে remove করব
     interviewList = interviewList.filter(item => item.company !== company);
-
-    // rejectionList থেকে remove
+    // rejectionList থেকে remove করব
     rejectionList = rejectionList.filter(item => item.company !== company);
 
-    // DOM থেকে remove
+    // DOM থেকে remove করব
     parentNode.remove();
 
-    // যদি filter page এ থাকো তাহলে আবার render করো
+    // যদি filter page এ থাকি তাহলে আবার render করব
     if(currentStatus === "interview-filter-btn"){
         renderInterview();
     }
     else if(currentStatus === "rejected-filter-btn"){
         renderRejection();
     }
-
-    count(); // counter update
+    // counter update
+    count(); 
 }
 
-
-
-console.log(application);
  });
+ 
+
+
 
 
  //--------------Delete Button--------------//

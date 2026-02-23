@@ -18,7 +18,7 @@ function renderInterview(){
             
          </div>
         <!-- part 3  -->
-        <p class="status bg-gray-300 max-w-[100px] py-1 text-center rounded-sm">${interview.status}</p>
+        <p class="status max-w-[100px] py-1 text-center font-semibold text-white bg-green-400 rounded-sm">${interview.status}</p>
          <p class="work">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
 
          <div class="flex gap-4">
@@ -27,9 +27,10 @@ function renderInterview(){
          </div>
         </div>
         <!-- main part 2  -->
-            <div>
-                <button id="delete"><span class="bg-[#64748B]/10 p-2 rounded-full"><i class="fa-regular fa-trash-can"></i></span></button>
-            </div>
+            
+        <div>
+            <button class="delete bg-[#64748B]/10 p-2 text-center rounded-full"><i  class="fa-regular fa-trash-can "></i></button>
+        </div>
         
         `
         filter.appendChild(div);
@@ -56,7 +57,7 @@ function renderRejection(){
             
          </div>
         <!-- part 3  -->
-        <p class="status bg-gray-300 max-w-[100px] py-1 text-center rounded-sm">${reject.status}</p>
+        <p class="status bg-red-700 text-white font-semibold max-w-[100px] py-1 text-center rounded-sm">${reject.status}</p>
          <p class="work">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
 
          <div class="flex gap-4">
@@ -66,7 +67,7 @@ function renderRejection(){
         </div>
         <!-- main part 2  -->
             <div>
-                <button id="delete"><span class="bg-[#64748B]/10 p-2 rounded-full"><i class="fa-regular fa-trash-can"></i></span></button>
+                <button><span class="delete bg-[#64748B]/10 p-2 rounded-full"><i class="fa-regular fa-trash-can"></i></span></button>
             </div>
         
         `
@@ -75,11 +76,26 @@ function renderRejection(){
  
 }
 
+
+
 //------------Calculate Count----------------//
+
+
+// deletebtn.addEventListener
 function count(){
     total.innerText = application.children.length;
     interviewCount.innerText = interviewList.length;
     rejectedCount.innerText = rejectionList.length;
+
+    if(currentStatus === "interview-filter-btn"){
+        totalJobs.innerText = interviewList.length;
+    }
+    else if(currentStatus === "rejected-filter-btn"){
+        totalJobs.innerText = rejectionList.length;
+    }
+    else{
+        totalJobs.innerText = application.children.length;
+    }
 }
 count();
 
