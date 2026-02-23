@@ -119,6 +119,7 @@ document.addEventListener("click",function(event){
     const status = parentNode.querySelector(".status").innerText;
     const work = parentNode.querySelector(".work").innerText;
     parentNode.querySelector(".status").innerText = "Interview";
+    parentNode.querySelector(".status").classList.remove("bg-red-700","bg-gray-300");
     parentNode.querySelector(".status").classList.add("bg-green-400","text-white","font-semibold", "rounded-sm");
 
   
@@ -145,13 +146,6 @@ document.addEventListener("click",function(event){
     }
  
 
-//-------------
-
-    
-
-
-//-----------
-
     }
 
     //---Reject button e click korle ei functuin run hobe---//
@@ -165,6 +159,7 @@ document.addEventListener("click",function(event){
     const status = parentNode.querySelector(".status").innerText;
     const work = parentNode.querySelector(".work").innerText;
     parentNode.querySelector(".status").innerText = "Rejected";
+    parentNode.querySelector(".status").classList.remove("bg-green-400","bg-gray-300");
     parentNode.querySelector(".status").classList.add("bg-red-700", "text-white" ,"font-semibold","rounded-sm");
     
     const card = {
