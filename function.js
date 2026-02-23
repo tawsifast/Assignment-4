@@ -2,6 +2,9 @@
 //--Interview button e click korle puro card ta interview list e cole jabe--//
 function renderInterview(){
     filter.innerHTML = '';
+    if(interviewList.length == 0){
+        noJobsBoard();
+    }
     for(let interview of interviewList){
         let div = document.createElement("div");
         div.className = 'job-card flex justify-between border p-5 ';
@@ -41,6 +44,9 @@ function renderInterview(){
 //--Rejected button e click korle puro card ta interview list e cole jabe--//
 function renderRejection(){
     filter.innerHTML = '';
+    if(rejectionList.length == 0){
+        noJobsBoard();
+    }
     for(let reject of rejectionList){
         let div = document.createElement("div");
         div.className = 'job-card flex justify-between border p-5';
@@ -76,6 +82,23 @@ function renderRejection(){
  
 }
 
+//----No jobs board------//
+
+function noJobsBoard(){
+      filter.innerHTML ='';
+        let div = document.createElement("div");
+        div.className = "flex flex-col items-center my-[15%] space-y-5";
+        div.innerHTML = `
+        <div class="">
+        <img src="./jobs.png" alt="">
+        </div>
+        <div class="text-center space-y-3">
+            <h1 class="font-semibold text text-[24px] ">No jobs available</h1>
+            <p class="text-[#64748B] ">Check back soon for new job opportunities</p>
+        </div>
+            `
+        filter.appendChild(div);
+    }
 
 
 

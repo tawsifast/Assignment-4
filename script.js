@@ -18,6 +18,7 @@ const interviewFilterBtn = document.getElementById("interview-filter-btn");
 const rejectedFilterBtn = document.getElementById("rejected-filter-btn");
 const totalJobs = document.getElementById("total-jobs");
 const deletebtn = document.querySelector(".delete");
+const update = document.getElementById("update");
 
 //--------------- job tracker count updating---------------//
 
@@ -34,7 +35,7 @@ function toggle(id){
    rejectedFilterBtn.classList.remove("bg-[#3B82F6]","text-[#FFFFFF]");
 
     const selected = document.getElementById(id);
-    currentStatus = id;
+    currentStatus = id; 
     selected.classList.remove("bg-[#FFFFFF]","text-[#64748B]");
     selected.classList.add("bg-[#3B82F6]","text-[#FFFFFF]");
 
@@ -44,52 +45,58 @@ function toggle(id){
         application.classList.add('hidden');
         filter.classList.remove('hidden');
         totalJobs.innerText = interviewList.length;
+        update.classList.remove("hidden")
+        update.innerText = "of " + application.children.length;
         renderInterview();
     }else if(id == 'all-filter-btn'){
         application.classList.remove('hidden');
         filter.classList.add('hidden');
+        update.classList.add("hidden");
+
         // total.innerText = application.children.length;
 
     }else if(id == "rejected-filter-btn"){
         application.classList.add('hidden');
         filter.classList.remove('hidden');
         totalJobs.innerText = rejectionList.length;
+        update.classList.remove("hidden")
+        update.innerText = " of " + application.children.length;
         renderRejection();
     }
  count();
     //-----btn e click korle & list empty thakle kaj korbe-----------//
 
 
-    if(id == 'interview-filter-btn' && interviewList.length == 0){
-            filter.innerHTML ='';
-            let div = document.createElement("div");
-            div.className = "flex flex-col items-center my-[15%] space-y-5";
-            div.innerHTML = `
-            <div class="">
-            <img src="./jobs.png" alt="">
-        </div>
-        <div class="text-center space-y-3">
-            <h1 class="font-semibold text text-[24px] ">No jobs available</h1>
-            <p class="text-[#64748B] ">Check back soon for new job opportunities</p>
-        </div>
-            `
-            filter.appendChild(div);
-    }
-    if(id == "rejected-filter-btn" && rejectionList.length == 0){
-            filter.innerHTML ='';
-            let div = document.createElement("div");
-            div.className = "flex flex-col items-center my-[15%] space-y-5";
-            div.innerHTML = `
-            <div class="">
-            <img src="./jobs.png" alt="">
-        </div>
-        <div class="text-center space-y-3">
-            <h1 class="font-semibold text text-[24px] ">No jobs available</h1>
-            <p class="text-[#64748B] ">Check back soon for new job opportunities</p>
-        </div>
-            `
-            filter.appendChild(div);
-    }
+    // if(id == 'interview-filter-btn' && interviewList.length == 0){
+    //         filter.innerHTML ='';
+    //         let div = document.createElement("div");
+    //         div.className = "flex flex-col items-center my-[15%] space-y-5";
+    //         div.innerHTML = `
+    //         <div class="">
+    //         <img src="./jobs.png" alt="">
+    //     </div>
+    //     <div class="text-center space-y-3">
+    //         <h1 class="font-semibold text text-[24px] ">No jobs available</h1>
+    //         <p class="text-[#64748B] ">Check back soon for new job opportunities</p>
+    //     </div>
+    //         `
+    //         filter.appendChild(div);
+    // }
+    // if(id == "rejected-filter-btn" && rejectionList.length == 0){
+    //         filter.innerHTML ='';
+    //         let div = document.createElement("div");
+    //         div.className = "flex flex-col items-center my-[15%] space-y-5";
+    //         div.innerHTML = `
+    //         <div class="">
+    //         <img src="./jobs.png" alt="">
+    //     </div>
+    //     <div class="text-center space-y-3">
+    //         <h1 class="font-semibold text text-[24px] ">No jobs available</h1>
+    //         <p class="text-[#64748B] ">Check back soon for new job opportunities</p>
+    //     </div>
+    //         `
+    //         filter.appendChild(div);
+    // }
 
 }
 
@@ -97,8 +104,8 @@ function toggle(id){
 
 //------------main function e eventlistener add er moddhome interviewlist & rejectedList banabo------------//
 
-// const main = document.querySelector("main");
 
+// const main = document.querySelector("main");
 document.addEventListener("click",function(event){
 
     if(event.target.classList.contains("interview-btn")){
@@ -135,6 +142,7 @@ document.addEventListener("click",function(event){
         // totalJobs.innerText = rejectionList.length;
         renderRejection();
     }
+
 
 //-------------
 
@@ -175,7 +183,12 @@ document.addEventListener("click",function(event){
       renderInterview();
     }
     count();
-    }
+
+}
+
+
+
+
 
     // else if(event.target.parentNode.parentNode){
     else if(event.target.closest(".delete")){
@@ -202,6 +215,7 @@ document.addEventListener("click",function(event){
     }
     // counter update
     count(); 
+    
 }
 
  });
