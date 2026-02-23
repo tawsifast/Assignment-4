@@ -107,7 +107,7 @@ function toggle(id){
 
 // const main = document.querySelector("main");
 document.addEventListener("click",function(event){
-
+//---Interview button e click korle ei functuin run hobe---//
     if(event.target.classList.contains("interview-btn")){
     
     // const parentNode = event.target.parentNode.parentNode;
@@ -119,9 +119,9 @@ document.addEventListener("click",function(event){
     const status = parentNode.querySelector(".status").innerText;
     const work = parentNode.querySelector(".work").innerText;
     parentNode.querySelector(".status").innerText = "Interview";
+    parentNode.querySelector(".status").classList.add("bg-green-400","text-white","font-semibold", "rounded-sm");
+
   
-    // parentNode.querySelector(".status").style.bgcolor = "red";
-    // status.style.bg-color = "green";
     const card = {
         company,
         skill,
@@ -130,6 +130,7 @@ document.addEventListener("click",function(event){
         work
     }
 //   console.log(card);
+
     const jobExist = interviewList.find(item => item.company == card.company);
 
     if(!jobExist){
@@ -142,7 +143,7 @@ document.addEventListener("click",function(event){
         // totalJobs.innerText = rejectionList.length;
         renderRejection();
     }
-
+ 
 
 //-------------
 
@@ -153,6 +154,7 @@ document.addEventListener("click",function(event){
 
     }
 
+    //---Reject button e click korle ei functuin run hobe---//
     else if(event.target.classList.contains("rejected-btn")){
     // const parentNode = event.target.parentNode.parentNode;
     const parentNode = event.target.closest('.job-card');
@@ -163,6 +165,7 @@ document.addEventListener("click",function(event){
     const status = parentNode.querySelector(".status").innerText;
     const work = parentNode.querySelector(".work").innerText;
     parentNode.querySelector(".status").innerText = "Rejected";
+    parentNode.querySelector(".status").classList.add("bg-red-700", "text-white" ,"font-semibold","rounded-sm");
     
     const card = {
         company,
@@ -185,11 +188,7 @@ document.addEventListener("click",function(event){
     count();
 
 }
-
-
-
-
-
+    //---Delete button e click korle ei functuin run hobe---//
     // else if(event.target.parentNode.parentNode){
     else if(event.target.closest(".delete")){
 
@@ -224,16 +223,7 @@ document.addEventListener("click",function(event){
 
 
 
- //--------------Delete Button--------------//
-
-//  let deleteCard = [];
-//  document.getElementById("delete").addEventListener("click", function(){
-
-//     const jobCard = document.getElementsByClassName("job-card");
-//     const empty = document.getElementById("empty");
-//     deleteCard.push(jobCard);
-//  })
-// console.log(deleteCard);
+ 
 
 
 

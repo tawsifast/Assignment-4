@@ -100,12 +100,8 @@ function noJobsBoard(){
         filter.appendChild(div);
     }
 
-
-
 //------------Calculate Count----------------//
 
-
-// deletebtn.addEventListener
 function count(){
     total.innerText = application.children.length;
     interviewCount.innerText = interviewList.length;
